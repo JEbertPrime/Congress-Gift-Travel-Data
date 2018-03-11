@@ -44,7 +44,6 @@ for name_child in root:
             for report_title_child in report_child:
                 for value in report_title_child.attrib.items():
                     d[value[0]] = value[1]
-            print(d)
             travel_data.append(d)
 
             
@@ -59,29 +58,11 @@ travel_gifts = open(csv_file_name + '.csv', 'w', newline='')
 # create the csv writer object
 
 writer = csv.writer(travel_gifts)
-#Because this stores multiple entries for the same employee on the same row, I just made the header row extend all the way out for all of them
-#Sorry for how poor of a workaround this is
-print(travel_data[0].keys())
+
 writer.writerow(list(travel_data[0].keys()))
 for item in travel_data:
     write_list = []
     for key, val in item.items():
         write_list.append(val)
-    print(write_list)
     writer.writerow(write_list)
-# writer.writerows(travel_data)
-
-
-
-# why is this just writing the header row over and over????????
-
-
-# In[55]:
-
-
-for item in travel_data:
-    for key, val in item.items():
-#         print(key)
-        print(val)
-        print()
 
